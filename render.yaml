@@ -1,10 +1,26 @@
-# Exported from Render on 2025-05-19T10:49:06Z
-services:
-- type: web
-  name: wedding_invite-
-  runtime: static
-  repo: https://github.com/pothinenisaimadhu/wedding_invite-
-  staticPublishPath: backend
-  autoDeployTrigger: commit
+# render.yaml
 version: "1"
 
+services:
+  - type: web
+    name: wedding-invite-frontend
+    plan: free
+    runtime: static
+    repo: https://github.com/pothinenisaimadhu/wedding_invite-
+    staticPublishPath: ./  # Points to root directory containing static files
+    autoDeployTrigger: commit
+    envVars:
+      - key: REACT_APP_API_URL  # Example for frontend API calls
+        value: https://your-backend-service.onrender.com
+
+  - type: web
+    name: wedding-invite-backend
+    plan: free
+    runtime: node  # Change to python if using Flask/Django
+    buildCommand: "npm install"
+    startCommand: "node server.js"  # Update to your entry file
+    envVars:
+      - key: DATABASE_URL
+        value: "postgresql://weddinginvite_jacklostso:${PGPASSWORD}@3ysuf.h.filess.io:61008/weddinginvite_jacklostso"
+      - key: PGPASSWORD
+        sync: false  # Will require manual input in Render Dashboard
