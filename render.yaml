@@ -4,7 +4,6 @@ version: "1"
 services:
   - type: web
     name: wedding-invite-frontend
-    plan: free
     runtime: static
     repo: https://github.com/pothinenisaimadhu/wedding_invite-
     staticPublishPath: ./  # Points to root directory containing static files
