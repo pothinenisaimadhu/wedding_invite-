@@ -1,1 +1,10 @@
+# Exported from Render on 2025-05-19T10:49:06Z
+services:
+- type: web
+  name: wedding_invite-
+  runtime: static
+  repo: https://github.com/pothinenisaimadhu/wedding_invite-
+  staticPublishPath: backend
+  autoDeployTrigger: commit
+version: "1"
 
